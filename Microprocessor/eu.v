@@ -31,7 +31,8 @@ output reg [1:0] op_sel,sel;
 reg temp,ready,cs_alu;
 reg [15:0] tempA,temp_result,A,B;
 reg [2:0] opcode;
-wire ready_alu,cout;
+wire ready_alu;
+  output cout;
   output [15:0] out;
 integer state=0;
 
