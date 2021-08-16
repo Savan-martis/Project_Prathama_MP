@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module eu(ir,sel_eu,ready_biu,bus,cs,clk,ready1,op_sel,cs_biu,sel);
+module eu(ir,sel_eu,ready_biu,bus,cs,clk,ready1,op_sel,cout,cs_biu,sel);
 input [31:0] ir;
 input [1:0] sel_eu;
 input ready_biu,clk,cs;
@@ -40,7 +40,7 @@ wire [15:0] out;
 output reg [1:0] sel;
 integer state=0;
 //reg [2:0] op;
-wire cout;
+output cout;
 alu b0(out,ready_alu,cout,A,B,opcode,cs_alu,clk);
 
 always@(posedge clk)
