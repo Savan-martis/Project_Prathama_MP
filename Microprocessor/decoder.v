@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 //decoder
-module decoder(clk,cs,ready_bus,ready_eu,ir,ready1,cs_fcu,cs_biu,cs_eu,sel_fcu,sel_eu,sel_biu);
+module decoder(clk,flag,cs,ready_bus,ready_eu,ir,ready1,cs_fcu,cs_biu,cs_eu,sel_fcu,sel_eu,sel_biu);
 input [31:0] ir;
 input clk,cs,ready_bus,ready_eu;
 output ready1;
@@ -28,6 +28,7 @@ output  reg cs_fcu,cs_biu,cs_eu;
 output reg sel_fcu;
 output reg [1:0] sel_biu,sel_eu;
 reg ready;
+  input [1:0]flag;
 wire arith_i,arith,comp,l_st,branch,mov,ready_bus,ready_eu,ready_fcu;
 integer state=0;
 
