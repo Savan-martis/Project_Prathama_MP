@@ -47,7 +47,7 @@ state=2;
 else if(mov|l_st)//biu
 state=3;
 else//fcu
-state=4;
+state=8;
 end
 //execution
 2:begin
@@ -74,6 +74,35 @@ if(ready_bus)
 state=0;
 else
 state=6;
+end
+8:begin
+  case(ir[17:15])
+  000:state=4;
+  001:begin
+      if(flag[0]==0)
+      state=7;
+      else
+      state=4;
+      end
+  010:begin
+    if(flag[0]==1)
+      state=7;
+      else
+      state=4;
+      end
+  011:begin
+    if(flag[1]==0)
+      state=7;
+      else
+      state=4;
+      end
+  100:begin
+    if(flag[1]==1)
+      state=7;
+      else
+      state=4;
+      end
+  endcase
 end
 //fcu
 4: begin
