@@ -78,6 +78,28 @@ else
 state=5;
 end
 7:begin
+if(ready_biu)
+begin
+  if(pc[0])//even
+state=8;
+else//odd
+state=9;
+end
+else
+state=7;
+end
+ 8:begin
+if(ready_biu)
+state=7;
+else
+state=8;
+end
+9:begin
+if(ready_biu)
+state=1;
+else
+state=9;
+end
 endcase
 end
 
@@ -103,6 +125,7 @@ end
 cs_biu=1;
 sel_biu=2'b11;
 fetch_address=ir[14:3];
+  pc=ir[14:3];
 4:begin
 ir[31:16]=bus;//upper
 end
