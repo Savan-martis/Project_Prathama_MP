@@ -1,6 +1,7 @@
-module comparator(cs_cmp,a,b,cm_result,ready);
-input a,b,cs_cmp,clk
-output cm_result,ready;
+module comparator(cs_cmp,clk,a,b,cout,z_flag,ready);
+input a,b,cs_cmp,clk;
+output reg ready,cout,z_flag;
+integer state;
 always@(posedge clk)
 begin
 case(state)
@@ -44,4 +45,3 @@ end
 endcase
 end
 endmodule
-
