@@ -51,11 +51,13 @@ end
 2:begin
 if(sel_fcu==1'b1)//regular mode
 state=3;
+else
+state=7;
 end
 3:begin
 if(ready_biu)
 begin
-if(pc[0])//even
+  if(pc[0])//even
 state=5;
 else//odd
 state=4;
@@ -75,6 +77,7 @@ state=1;
 else
 state=5;
 end
+7:begin
 endcase
 end
 
@@ -96,10 +99,21 @@ cs_biu=1;
 sel_biu=2'b11;
 fetch_address=pc;
 end
+7:begin
+cs_biu=1;
+sel_biu=2'b11;
+fetch_address=ir[14:3];
 4:begin
 ir[31:16]=bus;//upper
 end
 5:begin
+ir[15:0]=bus;//lower
+ready=1;
+end
+8:begin
+ir[31:16]=bus;//upper
+end
+9:begin
 ir[15:0]=bus;//lower
 ready=1;
 end
